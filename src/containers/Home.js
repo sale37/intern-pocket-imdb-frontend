@@ -3,26 +3,27 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { getMovies } from '../store/actions/MovieActions';
-import MovieCard from '../component/MovieCard';
 import Logout from './auth/Logout';
+import Movies from '../component/Movies';
+import '../styles/css/Home.css'
 
 class Home extends Component {
-  componentDidMount() {
-    this.props.getMovies();
-  }
-
-  renderMovies = () => {
-    return this.props.movies.map(movie => <MovieCard key={movie.id} movie={movie} />);
-  };
-
+ 
   render() {
     return (
-      <div>
-        <Logout />
+      <div className="container">
+        <div className="Logout">
+          <Logout />
+        </div>
+        <div className="OuterHeading">
+          <div className="ImdbHeading">
+            <h3 className="ParagraphHeading">
+              Welcome to Pocket <span className="Imdb">IMDb</span>
+            </h3>
+          </div>
+        </div>
         <div>
-          <p>Welcome to Pocket IMDb</p>
-          <h4>Movies</h4>
-          {this.renderMovies()}
+          <Movies />
         </div>
       </div>
     );

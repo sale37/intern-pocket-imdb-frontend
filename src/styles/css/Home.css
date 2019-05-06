@@ -1,0 +1,26 @@
+.ImdbHeading {
+    background-color: gold;
+    display: inline-block;
+    border: 5px solid black;
+    border-radius: 15px;
+}
+
+.OuterHeading {
+    text-align: center;
+}
+
+.ParagraphHeading {
+    margin: 5px;
+}
+
+.Imdb {
+    font-weight: bold;
+}
+
+.Logout {
+    text-align: right;
+}
+
+.container {
+    background-color: lightgray;
+}
