@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { register } from '../../store/actions/AuthActions';
+import { authService } from '../../services/AuthService';
 
 class Register extends Component {
   state = {
@@ -16,12 +17,14 @@ class Register extends Component {
   submit = event => {
     event.preventDefault();
 
+    const { history } = this.props;
+
     let registerData = {
       email: this.state.email,
       password: this.state.password,
       name: this.state.name
     };
-    this.props.register(registerData);
+    authService.register(registerData).then(res => history.push('/login'));
   };
 
   render() {

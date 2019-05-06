@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 import { getMovies } from '../store/actions/MovieActions';
 import MovieCard from '../component/MovieCard';
+import Logout from './auth/Logout';
 
 class Home extends Component {
   componentDidMount() {
@@ -17,9 +18,12 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <p>Welcome to Pocket IMDb</p>
-        <h4>Movies</h4>
-        {this.renderMovies()}
+        <Logout />
+        <div>
+          <p>Welcome to Pocket IMDb</p>
+          <h4>Movies</h4>
+          {this.renderMovies()}
+        </div>
       </div>
     );
   }

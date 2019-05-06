@@ -3,7 +3,7 @@ import ApiService from './ApiService';
 const ENDPOINTS = {
   LOGIN: '/api/auth/login',
   REGISTER: '/api/auth/register',
-  LOGOUT: '/logout'
+  LOGOUT: 'api/auth/logout'
 };
 
 class AuthService extends ApiService {
@@ -48,16 +48,21 @@ class AuthService extends ApiService {
     return data;
   };
 
-  signup = async signupData => {
+  register = async signupData => {
     const { data } = await this.apiClient.post(ENDPOINTS.REGISTER, signupData);
 
     return data;
   };
 
   logout = async () => {
+    try{
     const { data } = await this.apiClient.post(ENDPOINTS.LOGOUT);
     this.destroySession();
     return { ok: true, data };
+    }catch{
+            this.destroySession();
+            return false;
+          }
   };
 
   getToken = () => {
@@ -81,7 +86,9 @@ class AuthService extends ApiService {
     jsonUser = { ...jsonUser, ...property };
     localStorage.setItem('user', JSON.stringify(jsonUser));
   };
+
 }
 
-const authService = new AuthService();
-export default authService;
+
+export const authService = new AuthService();
+export default AuthService;
