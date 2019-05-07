@@ -1,0 +1,37 @@
+.ImageContainer {
+    width: 40%;
+    float: left;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+.Image {
+    height: 500px;
+    width: 500px;
+    padding-left: 40px;
+}
+
+.MovieTitle {
+    margin-top: 40px;
+    float: right;
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.MovieDescritpion {
+    float: right;
+    width: 50%;
+    padding-right: 40px;
+}
+
+.container {
+    overflow: hidden;
+}
+
+.BoldTitle {
+    font-weight: bold;
+}
+
+.DescriptionFont {
+    font-size: 20px;
+}

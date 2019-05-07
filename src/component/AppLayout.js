@@ -8,6 +8,7 @@ import Register from '../containers/auth/Register';
 import Home from '../containers/Home';
 import { authUser } from '../store/actions/AuthActions';
 import { authService } from '../services/AuthService';
+import Movie from '../component/Movie';
 
 class AppLayout extends React.Component {
   
@@ -18,6 +19,7 @@ class AppLayout extends React.Component {
           <Route exact path="/home" render={()=> authService.isAuthenticated() ? <Home/> : <Redirect to="/login" /> }/>
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/movies/:id" component={Movie}/>
         </div>
       </BrowserRouter>
     );
