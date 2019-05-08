@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { movieService } from "../services/MovieService";
 import "../styles/css/Movies.css";
 import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
-import ReactSearchBox from "react-search-box";
 
 let prev = 0;
 let next = 0;
@@ -70,10 +69,12 @@ class Movies extends Component {
       <div className="LinkContainer">
         <Link className="MovieLink" key={movie.id} to={`/movies/${movie.id}`}>
           <div className="Movie" key={movie.id}>
-            {" "}
-            <p className="Title">{movie.title} </p>
+            <div className="Title">{movie.title}</div>
           </div>
         </Link>
+        <div>
+        <div className="LikesAndDilikes"><span className="Likes">Likes:{movie.likes}</span>{" "}<span className="Dislikes">Dislikes:{movie.dislikes}</span></div>
+        </div>
       </div>
     );
   };
