@@ -10,7 +10,6 @@
 
 .Movie {
     font-size: 20px;
-    margin: 20px;
 }
 
 .MoviesHeading {
@@ -34,6 +33,10 @@
     display: inline-block;
 }
 
-.test {
-    border-radius: 15px;
+.Likes {
+    color: green;
+}
+
+.Dislikes {
+    color: red;
 }

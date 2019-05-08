@@ -1,4 +1,5 @@
 import ApiService from './ApiService';
+import { error } from 'util';
 
 const ENDPOINTS = {
   MOVIES: '/api/movies'
@@ -12,6 +13,10 @@ class MovieService extends ApiService {
 
   showMovie(id){
     return this.apiClient.get(`api/movies/${id}`);
+  }
+
+  updateLikeDislike(registerData){
+    return this.apiClient.patch(`/api/movies/updateLikeDislike/${registerData.id}`, registerData);
   }
 }
 
