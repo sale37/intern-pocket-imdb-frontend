@@ -1,0 +1,25 @@
+.MovieListContainer {
+    padding: 10px;
+    text-align: center;
+}
+.MoviesList {
+    display: inline-block;
+    padding: 20px;
+}
+
+.Movie {
+    font-size: 20px;
+    margin: 20px;
+}
+
+.MoviesHeading {
+    margin-bottom: 50px;
+}
+
+.MoviesHeading2 {
+    font-weight: bold;
+}
+
+.Title {
+    color: black;
+}
