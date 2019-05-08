@@ -15,6 +15,7 @@ class Movies extends Component {
 
     this.state = {
       movies: [],
+      filteredMovies: [],
       currentPage: 1,
       totalItems: 1,
       itemsPerPage: 5,
@@ -60,11 +61,6 @@ class Movies extends Component {
   };
 
   renderMovie = movie => {
-    const { search } = this.state;
-
-    if (search != "" && movie.title.indexOf(search) === -1) {
-      return null;
-    }
     return (
       <div className="LinkContainer">
         <Link className="MovieLink" key={movie.id} to={`/movies/${movie.id}`}>
@@ -73,14 +69,28 @@ class Movies extends Component {
           </div>
         </Link>
         <div>
-        <div className="LikesAndDilikes"><span className="Likes">Likes:{movie.likes}</span>{" "}<span className="Dislikes">Dislikes:{movie.dislikes}</span></div>
+          <div className="LikesAndDilikes">
+            <span className="Likes">Likes:{movie.likes}</span>{" "}
+            <span className="Dislikes">Dislikes:{movie.dislikes}</span>
+          </div>
         </div>
       </div>
     );
   };
 
-  render() {
-    const { movies, currentPage, itemsPerPage } = this.state;
+  getFilteredMovies() {
+    if (!this.state.search) {
+      return this.state.movies;
+    }
+
+    return this.state.movies.filter(
+      movie => movie.title.indexOf(this.state.search) >= 0
+    );
+  }
+
+  pagination() {
+    const { currentPage, itemsPerPage } = this.state;
+    const movies = this.getFilteredMovies();
 
     let indexOfLastMovie = currentPage * itemsPerPage;
     let indexOfFirstMovie = indexOfLastMovie - itemsPerPage;
@@ -94,6 +104,25 @@ class Movies extends Component {
     for (let i = 1; i <= last; i++) {
       pageNumbers.push(i);
     }
+    return {
+      prev,
+      last,
+      next,
+      currentMovies,
+      pageNumbers,
+      currentPage
+    };
+  }
+
+  render() {
+    const {
+      prev,
+      last,
+      next,
+      currentMovies,
+      pageNumbers,
+      currentPage
+    } = this.pagination();
 
     return (
       <div>
@@ -107,13 +136,7 @@ class Movies extends Component {
               type="search"
               onChange={this.handleFieldChange}
             />
-            {this.state.search != ""
-              ? movies.map(movie => {
-                  return this.renderMovie(movie);
-                })
-              : currentMovies.map(movie => {
-                  return this.renderMovie(movie);
-                })}
+            {currentMovies.map(movie => this.renderMovie(movie))}
           </div>
         </div>
         <ul id="page-numbers">
