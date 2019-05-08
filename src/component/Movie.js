@@ -6,7 +6,7 @@ class Movie extends Component {
   constructor() {
     super();
     this.state = {
-      movie: {}
+      movie: {},
     };
   }
 
@@ -20,17 +20,24 @@ class Movie extends Component {
     });
   }
 
+  
+
   render() {
     const { movie } = this.state;
-    
+
     return (
       <div className="container">
         <div className="MovieContainer">
           <div className="ImageContainer">
             <img className="Image" src={movie.image_url} />
           </div>
-          <div className="MovieTitle"><h1 className="BoldTitle">{movie.title}</h1></div>
-          <div className="MovieDescritpion"><p className="DescriptionFont">{movie.description}</p></div>
+          <div className="MovieTitle">
+            <h1 className="BoldTitle">{movie.title}</h1>
+          </div>
+          <div className="MovieDescritpion">
+            <p className="DescriptionFont">{movie.description}</p>
+            
+          </div>
         </div>
       </div>
     );

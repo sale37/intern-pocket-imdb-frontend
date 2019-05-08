@@ -35,3 +35,12 @@
 .DescriptionFont {
     font-size: 20px;
 }
+
+.LinkContainer {
+    text-align: center;
+    height: 60px;
+}
+
+.MovieLink {
+    display: inline-block;
+}
