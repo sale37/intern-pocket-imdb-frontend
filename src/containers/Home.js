@@ -23,7 +23,7 @@ class Home extends Component {
           </div>
         </div>
         <div>
-          <Movies />
+          <Movies/>
         </div>
       </div>
     );

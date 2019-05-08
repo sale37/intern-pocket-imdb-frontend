@@ -1,9 +1,9 @@
-import ApiService from './ApiService';
+import ApiService from "./ApiService";
 
 const ENDPOINTS = {
-  LOGIN: '/api/auth/login',
-  REGISTER: '/api/auth/register',
-  LOGOUT: 'api/auth/logout'
+  LOGIN: "/api/auth/login",
+  REGISTER: "/api/auth/register",
+  LOGOUT: "api/auth/logout"
 };
 
 class AuthService extends ApiService {
@@ -33,13 +33,13 @@ class AuthService extends ApiService {
   };
 
   createSession = user => {
-    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem("user", JSON.stringify(user));
     this.setAuthorizationHeader();
   };
 
   destroySession = () => {
     localStorage.clear();
-    this.api.removeHeaders(['Authorization']);
+    this.api.removeHeaders(["Authorization"]);
   };
 
   login = async loginData => {
@@ -55,40 +55,38 @@ class AuthService extends ApiService {
   };
 
   logout = async () => {
-    try{
-    const { data } = await this.apiClient.post(ENDPOINTS.LOGOUT);
-    this.destroySession();
-    return { ok: true, data };
-    }catch{
-            this.destroySession();
-            return false;
-          }
+    try {
+      const { data } = await this.apiClient.post(ENDPOINTS.LOGOUT);
+      this.destroySession();
+      return { ok: true, data };
+    } catch {
+      this.destroySession();
+      return false;
+    }
   };
 
   getToken = () => {
-    const user = localStorage.getItem('user');
+    const user = localStorage.getItem("user");
     return user ? JSON.parse(user).access_token : undefined;
   };
 
   isAuthenticated = () => {
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem("user"));
     return user && user.access_token ? true : false;
   };
 
   getUser = () => {
-    const user = localStorage.getItem('user');
+    const user = localStorage.getItem("user");
     return JSON.parse(user);
   };
 
   updateUserInStorage = property => {
-    const user = localStorage.getItem('user');
+    const user = localStorage.getItem("user");
     let jsonUser = JSON.parse(user);
     jsonUser = { ...jsonUser, ...property };
-    localStorage.setItem('user', JSON.stringify(jsonUser));
+    localStorage.setItem("user", JSON.stringify(jsonUser));
   };
-
 }
-
 
 export const authService = new AuthService();
 export default AuthService;
