@@ -1,0 +1,17 @@
+.comment-content{
+    border: 5px solid black;
+    margin-top: 5px;
+}
+
+.comments-list {
+    margin-bottom: 80px;
+}
+
+.load-more-button {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.comments-container {
+    margin-left: 5px;
+}

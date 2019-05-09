@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { movieService } from "../services/MovieService";
 import "../styles/css/Movie.css";
 import { error } from "util";
+import Comment from './Comment';
+import Comments from './Comments';
 
 class Movie extends Component {
   constructor() {
@@ -10,6 +12,7 @@ class Movie extends Component {
       movie: {},
       likes: "",
       dislikes: "",
+      comments: [],
       timesVisited: 0
     };
   }
@@ -22,10 +25,10 @@ class Movie extends Component {
         movie: response.data,
         likes: response.data.likes,
         dislikes: response.data.dislikes,
-        timesVisited: response.data.timesVisited
+        timesVisited: response.data.times_visited,
+        comments: response.data.comments
       });
     });
-
   }
 
   handleLIke = event => {
@@ -67,8 +70,9 @@ class Movie extends Component {
   };
 
   render() {
+
     const { movie, likes, dislikes } = this.state;
-    
+
     return (
       <div className="container">
         <div className="movie-container">
@@ -84,6 +88,10 @@ class Movie extends Component {
             <button onClick={this.handleDislike}>Dislike: {dislikes}</button>
             <div className="times-visited">Visited {this.state.timesVisited} times</div>
           </div>
+          <div className="comment-container">
+          <Comment id={this.state.movie.id}/>
+          </div>
+          <div className="comments-container"><Comments comments={this.state.comments}/></div>
         </div>
       </div>
     );
