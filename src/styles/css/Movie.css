@@ -44,3 +44,9 @@
 .MovieLink {
     display: inline-block;
 }
+
+.TimesVisited {
+    margin-top: 5px;
+    clear: both;
+    float: right;
+}

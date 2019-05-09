@@ -71,7 +71,8 @@ class Movies extends Component {
         <div>
           <div className="LikesAndDilikes">
             <span className="Likes">Likes:{movie.likes}</span>{" "}
-            <span className="Dislikes">Dislikes:{movie.dislikes}</span>
+            <span className="Dislikes">Dislikes:{movie.dislikes}</span>{" "}
+            <span className="Visited">Times visited: {movie.timesVisited}</span>
           </div>
         </div>
       </div>
