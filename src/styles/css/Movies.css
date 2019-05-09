@@ -1,42 +1,46 @@
-.MovieListContainer {
+.movies-list-container {
     padding: 10px;
     text-align: center;
     margin-bottom: 100px;
 }
-.MoviesList {
+.movies-list {
     display: inline-block;
     padding: 20px;
 }
 
-.Movie {
+.movie {
     font-size: 20px;
 }
 
-.MoviesHeading {
+.movies-heading {
     margin-bottom: 50px;
 }
 
-.MoviesHeading2 {
+.movies-heading-2 {
     font-weight: bold;
 }
 
-.Title {
+.title {
     color: black;
     font-size: 23px;
 }
 
-.NavPages {
+.nav-pages {
     text-align: center;
 }
 
-.Pages {
+.pages {
     display: inline-block;
 }
 
-.Likes {
+.likes {
     color: green;
 }
 
-.Dislikes {
+.dislikes {
     color: red;
+}
+
+.genres {
+    margin-bottom: 20px;
 }

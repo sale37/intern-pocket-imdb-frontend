@@ -1,23 +1,23 @@
-.ImdbHeading {
+.imdb-heading {
     background-color: gold;
     display: inline-block;
     border: 5px solid black;
     border-radius: 15px;
 }
 
-.OuterHeading {
+.outer-heading {
     text-align: center;
 }
 
-.ParagraphHeading {
+.paragraph-heading {
     margin: 5px;
 }
 
-.Imdb {
+.imdb {
     font-weight: bold;
 }
 
-.Logout {
+.logout {
     text-align: right;
 }
 

@@ -12,13 +12,13 @@ class Home extends Component {
   render() {
     return (
       <div className="container">
-        <div className="Logout">
+        <div className="logout">
           <Logout />
         </div>
-        <div className="OuterHeading">
-          <div className="ImdbHeading">
-            <h3 className="ParagraphHeading">
-              Welcome to Pocket <span className="Imdb">IMDb</span>
+        <div className="outer-heading">
+          <div className="imdb-heading">
+            <h3 className="paragraph-heading">
+              Welcome to Pocket <span className="imdb">IMDb</span>
             </h3>
           </div>
         </div>
