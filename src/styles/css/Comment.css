@@ -1,0 +1,13 @@
+.comment-input{
+    margin-left: 40px;
+    width: 80%;
+    height: 100px;
+}
+
+.comment-form {
+    text-align: center;
+}
+
+.submit-comment {
+    margin-bottom: 40px;
+}

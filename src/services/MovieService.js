@@ -26,6 +26,14 @@ class MovieService extends ApiService {
   getGenres(){
     return this.apiClient.get('/api/genres');
   }
+
+  postComment(registerData){
+    return this.apiClient.post('/api/comments', registerData);
+  }
+
+  getComments(id){
+    return this.apiClient.get(`api/movies/getComments/${id}`);
+  }
 }
 
 
