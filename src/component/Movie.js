@@ -71,18 +71,18 @@ class Movie extends Component {
     
     return (
       <div className="container">
-        <div className="MovieContainer">
-          <div className="ImageContainer">
-            <img className="Image" src={movie.image_url} />
+        <div className="movie-container">
+          <div className="image-container">
+            <img className="image" src={movie.image_url} />
           </div>
-          <div className="MovieTitle">
-            <h1 className="BoldTitle">{movie.title}</h1>
+          <div className="movie-title">
+            <h1 className="bold-title">{movie.title}</h1>
           </div>
-          <div className="MovieDescritpion">
-            <p className="DescriptionFont">{movie.description}</p>
+          <div className="movie-descritpion">
+            <p className="description-font">{movie.description}</p>
             <button onClick={this.handleLIke}>Like: {likes}</button>
             <button onClick={this.handleDislike}>Dislike: {dislikes}</button>
-            <div className="TimesVisited">Visited {this.state.timesVisited} times</div>
+            <div className="times-visited">Visited {this.state.timesVisited} times</div>
           </div>
         </div>
       </div>

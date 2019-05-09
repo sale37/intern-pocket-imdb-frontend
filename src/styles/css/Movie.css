@@ -1,24 +1,24 @@
-.ImageContainer {
+.image-container {
     width: 40%;
     float: left;
     margin-bottom: 40px;
     margin-top: 40px;
 }
 
-.Image {
+.image {
     height: 500px;
     width: 500px;
     padding-left: 40px;
 }
 
-.MovieTitle {
+.movie-title {
     margin-top: 40px;
     float: right;
     width: 50%;
     margin-bottom: 20px;
 }
 
-.MovieDescritpion {
+.movie-descritpion {
     float: right;
     width: 50%;
     padding-right: 40px;
@@ -28,24 +28,24 @@
     overflow: hidden;
 }
 
-.BoldTitle {
+.bold-title {
     font-weight: bold;
 }
 
-.DescriptionFont {
+.description-font {
     font-size: 20px;
 }
 
-.LinkContainer {
+.link-container {
     text-align: center;
     height: 60px;
 }
 
-.MovieLink {
+.movie-link {
     display: inline-block;
 }
 
-.TimesVisited {
+.times-visited {
     margin-top: 5px;
     clear: both;
     float: right;

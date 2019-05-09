@@ -22,7 +22,12 @@ class MovieService extends ApiService {
   updatePageVisited(registerData){
     return this.apiClient.patch(`/api/movies/${registerData.id}`, registerData);
   }
+
+  getGenres(){
+    return this.apiClient.get('/api/genres');
+  }
 }
+
 
 
 

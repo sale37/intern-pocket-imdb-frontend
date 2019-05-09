@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { movieService } from "../services/MovieService";
 import "../styles/css/Movies.css";
 import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
+import Select from "react-select";
 
 let prev = 0;
 let next = 0;
@@ -19,7 +20,9 @@ class Movies extends Component {
       currentPage: 1,
       totalItems: 1,
       itemsPerPage: 5,
-      search: ""
+      search: "",
+      genres: [],
+      selectedGenre: ""
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleLastClick = this.handleLastClick.bind(this);
@@ -32,6 +35,11 @@ class Movies extends Component {
       this.setState({
         movies: response.data,
         totalItems: response.data.length
+      });
+    });
+    movieService.getGenres().then(response => {
+      this.setState({
+        genres: response.data
       });
     });
   }
@@ -62,17 +70,17 @@ class Movies extends Component {
 
   renderMovie = movie => {
     return (
-      <div className="LinkContainer">
-        <Link className="MovieLink" key={movie.id} to={`/movies/${movie.id}`}>
-          <div className="Movie" key={movie.id}>
-            <div className="Title">{movie.title}</div>
+      <div className="link-container" key={movie.id}>
+        <Link className="movie-link" key={movie.id} to={`/movies/${movie.id}`}>
+          <div className="movie" key={movie.id}>
+            <div className="title">{movie.title}</div>
           </div>
         </Link>
         <div>
-          <div className="LikesAndDilikes">
-            <span className="Likes">Likes:{movie.likes}</span>{" "}
-            <span className="Dislikes">Dislikes:{movie.dislikes}</span>{" "}
-            <span className="Visited">Times visited: {movie.timesVisited}</span>
+          <div className="likes-and-dislikes">
+            <span className="likes">Likes:{movie.likes}</span>{" "}
+            <span className="dislikes">Dislikes:{movie.dislikes}</span>{" "}
+            <span className="visited">Times visited: {movie.timesVisited}</span>
           </div>
         </div>
       </div>
@@ -80,12 +88,14 @@ class Movies extends Component {
   };
 
   getFilteredMovies() {
-    if (!this.state.search) {
+    if (!this.state.search && !this.state.selectedGenre) {
       return this.state.movies;
     }
 
     return this.state.movies.filter(
-      movie => movie.title.indexOf(this.state.search) >= 0
+      movie =>
+        movie.title.indexOf(this.state.search) >= 0 &&
+        movie.genre_id == this.state.selectedGenre.value
     );
   }
 
@@ -115,6 +125,10 @@ class Movies extends Component {
     };
   }
 
+  handleGenreChange = selectedGenre => {
+    this.setState({ selectedGenre });
+  };
+
   render() {
     const {
       prev,
@@ -125,13 +139,26 @@ class Movies extends Component {
       currentPage
     } = this.pagination();
 
+    const options = this.state.genres.map(genre => ({
+      value: genre.id,
+      label: genre.name
+    }));
+
+    const { selectedGenre } = this.state;
+
     return (
       <div>
-        <div className="MovieListContainer">
-          <div className="MovieList">
-            <div className="MoviesHeading">
-              <h1 className="MoviesHeading2">Movies</h1>
+        <div className="movies-list-container">
+          <div className="movies-list">
+            <div className="movies-heading">
+              <h1 className="movies-heading-2">Movies</h1>
             </div>
+            <Select
+            className="genres"
+            value={selectedGenre}
+            onChange={this.handleGenreChange}
+            options={options}
+          />
             <input
               id="search"
               type="search"
@@ -141,9 +168,9 @@ class Movies extends Component {
           </div>
         </div>
         <ul id="page-numbers">
-          <nav className="NavPages">
-            <div className="PaginationContainer">
-              <Pagination className="Pages">
+          <nav className="nav-pages">
+            <div className="pagination-container">
+              <Pagination className="pages">
                 <PaginationItem>
                   {prev === 0 ? (
                     <PaginationLink disabled>First</PaginationLink>
