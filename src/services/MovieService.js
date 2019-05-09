@@ -32,7 +32,7 @@ class MovieService extends ApiService {
   }
 
   getComments(id){
-    return this.apiClient.get(`api/movies/getComments/${id}`);
+    return this.apiClient.get(`api/movies/${id}/comments`);
   }
 }
 

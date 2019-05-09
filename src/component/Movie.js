@@ -25,14 +25,10 @@ class Movie extends Component {
         movie: response.data,
         likes: response.data.likes,
         dislikes: response.data.dislikes,
-        timesVisited: response.data.timesVisited,
+        timesVisited: response.data.times_visited,
+        comments: response.data.comments
       });
     });
-    movieService.getComments(movieId).then(response => {
-      this.setState({
-        comments: response.data
-      })
-    })
   }
 
   handleLIke = event => {
