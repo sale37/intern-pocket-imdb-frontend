@@ -9,7 +9,8 @@ class Movie extends Component {
     this.state = {
       movie: {},
       likes: "",
-      dislikes: ""
+      dislikes: "",
+      timesVisited: 0
     };
   }
 
@@ -20,9 +21,11 @@ class Movie extends Component {
       this.setState({
         movie: response.data,
         likes: response.data.likes,
-        dislikes: response.data.dislikes
+        dislikes: response.data.dislikes,
+        timesVisited: response.data.timesVisited
       });
     });
+
   }
 
   handleLIke = event => {
@@ -65,7 +68,7 @@ class Movie extends Component {
 
   render() {
     const { movie, likes, dislikes } = this.state;
-
+    
     return (
       <div className="container">
         <div className="MovieContainer">
@@ -79,6 +82,7 @@ class Movie extends Component {
             <p className="DescriptionFont">{movie.description}</p>
             <button onClick={this.handleLIke}>Like: {likes}</button>
             <button onClick={this.handleDislike}>Dislike: {dislikes}</button>
+            <div className="TimesVisited">Visited {this.state.timesVisited} times</div>
           </div>
         </div>
       </div>

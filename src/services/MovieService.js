@@ -18,6 +18,12 @@ class MovieService extends ApiService {
   updateLikeDislike(registerData){
     return this.apiClient.patch(`/api/movies/updateLikeDislike/${registerData.id}`, registerData);
   }
+
+  updatePageVisited(registerData){
+    return this.apiClient.patch(`/api/movies/${registerData.id}`, registerData);
+  }
 }
+
+
 
 export const movieService = new MovieService();
