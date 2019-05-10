@@ -158,6 +158,7 @@ class Movies extends Component {
             value={selectedGenre}
             onChange={this.handleGenreChange}
             options={options}
+            placeholder="Select genre"
           />
             <input
               id="search"

@@ -17,8 +17,12 @@
     font-weight: bold;
 }
 
-.logout {
+.logout-watchlist {
     text-align: right;
+}
+
+.new-watchlist {
+    float: right;
 }
 
 .container {

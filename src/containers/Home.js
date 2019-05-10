@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 import { getMovies } from '../store/actions/MovieActions';
 import Logout from './auth/Logout';
@@ -12,7 +13,8 @@ class Home extends Component {
   render() {
     return (
       <div className="container">
-        <div className="logout">
+        <div className="logout-watchlist">
+        <Link to="/watchlists"><button>Watchlists</button></Link>
           <Logout />
         </div>
         <div className="outer-heading">
