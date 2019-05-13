@@ -25,6 +25,14 @@ class WatchlistService extends ApiService {
     removeMovieFromWatchlist(watchlist_id, movie_id){
         return this.apiClient.delete(`api/watchlists/${watchlist_id}/movies/${movie_id}`);
     }
+
+    markAsWatchedUnwatched(movie_id){
+        return this.apiClient.patch(`api/movies/${movie_id}/watched`);
+    }
+
+    deleteWatchlist(id){
+        return this.apiClient.delete(`/api/watchlists/${id}`);
+    }
 }
 
 

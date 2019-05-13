@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { movieService } from "../services/MovieService";
 import "../styles/css/Movies.css";
-import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
+import { Badge, Pagination, PaginationItem, PaginationLink } from "reactstrap";
 import Select from "react-select";
 
 let prev = 0;
@@ -73,7 +73,7 @@ class Movies extends Component {
       <div className="link-container" key={movie.id}>
         <Link className="movie-link" key={movie.id} to={`/movies/${movie.id}`}>
           <div className="movie" key={movie.id}>
-            <div className="title">{movie.title}</div>
+            <div className="title">{movie.title}{" "}{movie.is_watched ? <Badge color="success" pill>Watched</Badge> : null}</div>
           </div>
         </Link>
         <div>

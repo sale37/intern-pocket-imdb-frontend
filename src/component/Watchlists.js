@@ -34,7 +34,7 @@ class Watchlists extends Component {
             </Link>
           ))}
           <div className="new-watchlist-container">
-              <Link className="new-watchlist-link" to="/watchlists/create">
+              <Link className="new-watchlist-link" to="/watchlist/create">
                 <button>New Watchlist</button>
               </Link>
             </div>

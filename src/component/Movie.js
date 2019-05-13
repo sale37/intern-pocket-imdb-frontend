@@ -103,6 +103,7 @@ class Movie extends Component {
       })
       .catch(error);
   };
+  
 
   render() {
     const { movie, likes, dislikes } = this.state;

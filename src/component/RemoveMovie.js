@@ -17,9 +17,8 @@ class RemoveMovie extends Component {
 
     const movie_id = this.props.movie_id;
 
-    console.log(watchlist_id);
 
-    const { history } = this.state;
+    const { history } = this.props;
 
     watchlistService.removeMovieFromWatchlist(watchlist_id, movie_id).then(response => {
         history.refresh();

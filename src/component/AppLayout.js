@@ -24,7 +24,7 @@ class AppLayout extends React.Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/movies/:id" component={Movie}/>
           <Route exact path="/watchlist/create" component={CreateWatchlist}/>
-          <Route exact path="/watchlists/:id" component={Watchlist}/>
+          <Route path="/watchlists/:id" component={Watchlist}/>
           <Route exact path="/watchlists" component={Watchlists}/>
         </div>
       </BrowserRouter>
