@@ -1,0 +1,21 @@
+.related-movies-sidebar {
+    position: absolute;
+    right: 50px;
+    top: 250px;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    height: 400px;
+    overflow: scroll;
+    width: 20%;
+}
+
+.container {
+    position: relative;
+}
+
+.related-movies-label {
+    position: absolute;
+    right: 90px;
+    top: 210px;
+}

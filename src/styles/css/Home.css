@@ -17,14 +17,12 @@
     font-weight: bold;
 }
 
-.logout-watchlist {
-    text-align: right;
-}
 
-.new-watchlist {
+.buttons {
     float: right;
 }
 
 .container {
     background-color: lightgray;
 }
+

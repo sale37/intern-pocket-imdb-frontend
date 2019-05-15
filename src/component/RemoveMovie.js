@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { withRouter } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 import { watchlistService } from "../services/WatchlistService";
-
 
 class RemoveMovie extends Component {
   constructor(props) {
@@ -17,16 +16,21 @@ class RemoveMovie extends Component {
 
     const movie_id = this.props.movie_id;
 
-
     const { history } = this.props;
 
-    watchlistService.removeMovieFromWatchlist(watchlist_id, movie_id).then(response => {
-        history.refresh();
-    });
-  }
+    watchlistService
+      .removeMovieFromWatchlist(watchlist_id, movie_id)
+      .then(response => {
+        this.props.removeFromWatchlist(movie_id);
+      });
+  };
 
   render() {
-    return <button className="remove" onClick={this.handleDelete}>Remove from list</button>;
+    return (
+      <button className="remove" onClick={this.handleDelete}>
+        Remove from list
+      </button>
+    );
   }
 }
 

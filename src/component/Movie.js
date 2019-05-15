@@ -7,6 +7,10 @@ import Comments from "./Comments";
 import { Link } from "react-router-dom";
 import { watchlistService } from "../services/WatchlistService";
 import Select from "react-select";
+import Logout from "../containers/auth/Logout";
+import { FaThumbsUp } from "react-icons/fa";
+import { FaThumbsDown } from "react-icons/fa";
+import RelatedMovies from "./RelatedMovies";
 
 class Movie extends Component {
   constructor() {
@@ -18,7 +22,8 @@ class Movie extends Component {
       comments: [],
       timesVisited: 0,
       watchlists: [],
-      selectedWatchlist: ""
+      selectedWatchlist: "",
+      genre: ""
     };
   }
 
@@ -31,7 +36,8 @@ class Movie extends Component {
         likes: response.data.likes,
         dislikes: response.data.dislikes,
         timesVisited: response.data.times_visited,
-        comments: response.data.comments
+        comments: response.data.comments,
+        genre: response.data.genre
       });
     });
     watchlistService.getWatchlists().then(response => {
@@ -86,8 +92,8 @@ class Movie extends Component {
   };
 
   handleAddMovieToWatchlist = selectedWatchlist => {
-    if(selectedWatchlist.value == 'new-list'){
-      this.props.history.push('/watchlist/create')
+    if (selectedWatchlist.value == "new-list") {
+      this.props.history.push("/watchlist/create");
     }
     watchlistService
       .addToWatchlist(this.state.movie, selectedWatchlist.value)
@@ -103,7 +109,6 @@ class Movie extends Component {
       })
       .catch(error);
   };
-  
 
   render() {
     const { movie, likes, dislikes } = this.state;
@@ -113,27 +118,21 @@ class Movie extends Component {
       label: watchlist.name
     }));
 
-    options.push({value:'new-list', label: 'New watch list'});
+    options.push({ value: "new-list", label: "New watch list" });
 
     return (
       <div className="container">
+        <nav className="header">
+        <Link to="/home">
+          <h2 className="pocket-imdb">
+            Pocket<span className="imdb">IMDB</span>
+          </h2>
+          </Link>
+          <div className="logout-button">
+            <Logout />
+          </div>
+        </nav>
         <div className="movie-container">
-          <div className="image-container">
-            <img className="image" src={movie.image_url} />
-          </div>
-          <div className="movie-title">
-            <h1 className="bold-title">{movie.title}</h1>
-          </div>
-          <div className="movie-descritpion">
-            <p className="description-font">{movie.description}</p>
-          </div>
-          <div className="like-dislike-container">
-            <button onClick={this.handleLIke}>Like: {likes}</button>
-            <button onClick={this.handleDislike}>Dislike: {dislikes}</button>
-          </div>
-          <div className="times-visited">
-            Visited {this.state.timesVisited} times
-          </div>
           <div>
             <div className="watchlists-select">
               <Select
@@ -144,13 +143,41 @@ class Movie extends Component {
               />
             </div>
           </div>
+          <div className="movie-title">
+            <h1 className="bold-title">{movie.title}</h1>
+          </div>
+          <div className="genre">
+            {this.state.genre.name}
+          </div>
+          <div className="like-dislike-container">
+            <div className="like-container">
+              <FaThumbsUp className="thumbs-up" onClick={this.handleLIke}/>
+              <div className="likes-number"> {likes}</div>
+            </div>
+            <div className="dislike-container">
+              <FaThumbsDown className="thumbs-down" onClick={this.handleDislike} />
+              <div className="dislikes-number"> {dislikes}</div>
+            </div>
+          </div>
+          <div className="image-and-description">
+            <div className="image-container">
+              <img className="image" src={movie.image_url} />
+            </div>
+            <div className="movie-descritpion">
+              <p className="description-font">{movie.description}</p>
+            </div>
+          </div>
+          <div className="times-visited">
+            Visited {this.state.timesVisited} times
+          </div>
           <div className="comment-container">
             <Comment id={this.state.movie.id} />
           </div>
-          <div className="comments-container">
+        </div>
+        <div className="related-movies" ><RelatedMovies genre={this.state.genre}/></div>
+        <div className="comments-container">
             <Comments comments={this.state.comments} />
           </div>
-        </div>
       </div>
     );
   }

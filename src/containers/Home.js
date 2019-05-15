@@ -8,22 +8,23 @@ import Logout from './auth/Logout';
 import Movies from '../component/Movies';
 import '../styles/css/Home.css'
 
+
 class Home extends Component {
  
   render() {
     return (
       <div className="container">
-        <div className="logout-watchlist">
-        <Link to="/watchlists"><button>Watchlists</button></Link>
-          <Logout />
-        </div>
-        <div className="outer-heading">
-          <div className="imdb-heading">
-            <h3 className="paragraph-heading">
-              Welcome to Pocket <span className="imdb">IMDb</span>
-            </h3>
+      <nav className="header">
+        <Link to="/home">
+          <h2 className="pocket-imdb">
+            Pocket<span className="imdb">IMDB</span>
+          </h2>
+          </Link>
+          <div className="buttons">
+          <Link to="/watchlists"><button>Watchlists</button></Link>
+            <Logout />
           </div>
-        </div>
+        </nav>
         <div>
           <Movies/>
         </div>

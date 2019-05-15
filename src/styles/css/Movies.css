@@ -2,14 +2,20 @@
     padding: 10px;
     text-align: center;
     margin-bottom: 100px;
+    position: relative;
 }
 .movies-list {
-    display: inline-block;
     padding: 20px;
+    width: 70%;
+    border-right: 2px solid grey;
 }
 
 .movie {
     font-size: 20px;
+}
+
+.movie-link {
+    display: inline-block;
 }
 
 .movies-heading {
@@ -20,9 +26,10 @@
     font-weight: bold;
 }
 
-.title {
+.single-movie-title {
     color: black;
     font-size: 23px;
+    float: left;
 }
 
 .nav-pages {
@@ -35,12 +42,58 @@
 
 .likes {
     color: green;
+    margin-right: 3px;
 }
 
 .dislikes {
     color: red;
+    margin-right: 3px;
 }
 
 .genres {
     margin-bottom: 20px;
+    width: 200px;
+    float: left;
+}
+
+.filter-label {
+    float: left;
+    padding-top: 10px;
+    margin-right: 10px;
+}
+
+
+.search-box {
+    position: absolute;
+    top: -40px;
+    right: 20px;
+}
+
+.single-movie-container {
+    overflow: hidden;
+    width: 600px;
+    text-align: left;
+    margin-top: 40px;
+}
+
+.single-movie-image {
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin-right: 5px;
+}
+
+.single-movie-descritpion {
+    font-size: 12px;
+    text-align: justify;
+    float: left;
+    width: 80%;
+    /* clear: initial; */
+}
+
+.likes-and-dislikes {
+    float: left;
+    font-size: 15px;
+    padding-top: 8px;
+    padding-left: 10px;
 }

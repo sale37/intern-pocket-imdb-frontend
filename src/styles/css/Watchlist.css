@@ -29,8 +29,14 @@
 
 .remove {
     font-size: 15px;
+    text-align: center;
 }
 
 .content-container {
     margin-bottom: 20px;
+}
+
+.movie-in-watchlist {
+    color: black;
+    font-size: 20px;
 }

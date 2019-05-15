@@ -1,6 +1,9 @@
 .comment-content{
-    border: 5px solid black;
+    border: 1px solid grey;
+    padding: 10px;
+    background: white;
     margin-top: 5px;
+    border-radius: 5px;
 }
 
 .comments-list {

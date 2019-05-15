@@ -1,0 +1,30 @@
+.movies-list-add-to-watchlist {
+    padding: 20px;
+}
+
+.list-of-movies-add-to-watchlist {
+    margin-top: 40px;
+}
+
+.filter-and-search {
+    border-bottom: 2px solid grey;
+    padding-bottom: 20px;
+}
+
+.genres-add-to-watchlist {
+    width: 300px;
+}
+
+.search-box-add-to-list {
+    position: absolute;
+    top: 40px;
+    right: 70px;
+}
+
+.button-add-movie-to-list {
+    float: left;
+    border-radius: 10px;
+    width: 70px;
+    height: 30px;
+    font-size: 15px;
+}

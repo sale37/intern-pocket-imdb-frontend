@@ -25,9 +25,9 @@ class Comments extends Component {
         <h2>Comments</h2>
           {this.props.comments
             .slice(0, this.state.visible)
-            .map((comment, index) => {
+            .map(comment => {
               return (
-                  <div className="comment-content">
+                  <div className="comment-content" key={comment.id}>
                     <h5>{comment.author}</h5>
                     <p>{comment.comment}</p>
                   </div>

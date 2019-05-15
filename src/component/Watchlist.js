@@ -6,13 +6,15 @@ import RemoveMovie from "./RemoveMovie";
 import MarkAsWatched from "./MarkAsWatched";
 import { Badge } from "reactstrap";
 import update from "immutability-helper";
+import AddToWatchlist from './AddToWatchlist';
 
 class Watchlist extends Component {
   constructor() {
     super();
     this.state = {
       watchlist: {},
-      movies: []
+      movies: [],
+      addMovie: false
     };
   }
 
@@ -45,6 +47,14 @@ class Watchlist extends Component {
     });
   };
 
+  removeFromWatchlist = movieId => {
+    
+      const movies = this.state.movies.splice(movieId, 1);
+      
+      this.setState({ movies });
+    
+  };
+
   handleDelete = event => {
     event.preventDefault();
 
@@ -57,10 +67,19 @@ class Watchlist extends Component {
     });
   }
 
+  handleAddButton = event => {
+      event.preventDefault();
+
+      this.setState({
+        addMovie: true
+      });
+  }
+
   render() {
     const { watchlist, movies } = this.state;
 
     return (
+      this.state.addMovie == false ? (
       <div className="container">
         <div className="watchlist-container">
           <div className="watchlist-header">
@@ -75,8 +94,8 @@ class Watchlist extends Component {
                 key={movie.id}
                 to={`/movies/${movie.id}`}
               >
-                <div className="movie" key={movie.id}>
-                  <div className="title">
+                <div className="movie-in-watchlist" key={movie.id}>
+                  <div className="title-movie-in-watchlist">
                     {movie.title}{" "}
                     {movie.is_watched ? (
                       <Badge color="success" pill>
@@ -86,8 +105,9 @@ class Watchlist extends Component {
                   </div>
                 </div>
               </Link>
-              <div className="buttons">
+              <div className="buttons-watchlist">
                 <RemoveMovie
+                  removeFromWatchlist={this.removeFromWatchlist}
                   movie_id={movie.id}
                   watchlist_id={this.state.watchlist.id}
                 />
@@ -101,14 +121,13 @@ class Watchlist extends Component {
           ))}
         </div>
         <div className="add-movie">
-          <Link className="add-movie-link" to="/home">
-            <button>Add movie</button>
-          </Link>
+            <button onClick={this.handleAddButton}>Add movie</button>
         </div>
         <div className="delete-watchlist">
             <button onClick={this.handleDelete}>Delete watchlist</button>
         </div>
-      </div>
+      </div>) : <AddToWatchlist watchlistId={this.state.watchlist.id}/>
+      
     );
   }
 }

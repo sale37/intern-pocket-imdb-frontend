@@ -2,17 +2,19 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { movieService } from "../services/MovieService";
 import "../styles/css/Movies.css";
+import "../styles/css/AddToWatchlist.css";
 import { Badge, Pagination, PaginationItem, PaginationLink } from "reactstrap";
 import Select from "react-select";
 import TopMovies from "../component/TopMovies";
-import Truncate from 'react-truncate';
+import Truncate from "react-truncate";
+import { watchlistService } from "../services/WatchlistService";
 
 let prev = 0;
 let next = 0;
 let last = 0;
 let first = 0;
 
-class Movies extends Component {
+class AddToWatchlist extends Component {
   constructor() {
     super();
 
@@ -22,11 +24,11 @@ class Movies extends Component {
       currentPage: 1,
       totalItems: 1,
       itemsPerPage: 10,
-      startIndex : 0,
-      endIndex : 10,
       search: "",
       genres: [],
-      selectedGenre: ""
+      selectedGenre: "",
+      startIndex: 0,
+      endIndex: 10
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleLastClick = this.handleLastClick.bind(this);
@@ -57,17 +59,18 @@ class Movies extends Component {
       currentPage: Number(event.target.id)
     });
 
-    if(Number(event.target.id) > 5){
-      if(Number(event.target.id) > last-5){
+    if (Number(event.target.id) > 5) {
+      if (Number(event.target.id) > last - 5) {
         this.setState({
-          startIndex: last-10,
+          startIndex: last - 10,
           endIndex: last
         });
-      }else {
-      this.setState({
-        startIndex: Number(event.target.id)-5,
-        endIndex: Number(event.target.id)+5
-      })};
+      } else {
+        this.setState({
+          startIndex: Number(event.target.id) - 5,
+          endIndex: Number(event.target.id) + 5
+        });
+      }
     }
   }
 
@@ -76,7 +79,7 @@ class Movies extends Component {
     this.setState({
       currentPage: last,
       endIndex: last,
-      startIndex: last-10
+      startIndex: last - 10
     });
   }
   handleFirstClick(event) {
@@ -128,6 +131,7 @@ class Movies extends Component {
                   {movie.description}
                 </Truncate>
               </div>
+              <button className="button-add-movie-to-list" onClick={this.handleAddMovieToList.bind(this, movie)}>Add</button>
             </div>
           </div>
         </div>
@@ -136,27 +140,33 @@ class Movies extends Component {
     );
   };
 
+  handleAddMovieToList = movie => {
+      watchlistService.addToWatchlist(movie, this.props.watchlistId).then(function(response) {
+        if (response != 500) {
+          alert("Movie added to watchlist");
+        }
+      });
+  }
+
   getFilteredMovies() {
     if (!this.state.search) {
-      if(!this.state.selectedGenre){
+      if (!this.state.selectedGenre) {
         return this.state.movies;
-      }else{
+      } else {
         return this.state.movies.filter(
-          movie =>
-          movie.genre_id == this.state.selectedGenre.value
-        )
+          movie => movie.genre_id == this.state.selectedGenre.value
+        );
       }
-    } else if(!this.state.selectedGenre){
+    } else if (!this.state.selectedGenre) {
       return this.state.movies.filter(
-        movie =>
-        movie.title.indexOf(this.state.search) >= 0
-      )
+        movie => movie.title.indexOf(this.state.search) >= 0
+      );
     } else {
       return this.state.movies.filter(
         movie =>
           movie.title.indexOf(this.state.search) >= 0 &&
           movie.genre_id == this.state.selectedGenre.value
-      )
+      );
     }
   }
 
@@ -176,7 +186,6 @@ class Movies extends Component {
     for (let i = 1; i <= last; i++) {
       pageNumbers.push(i);
     }
-
     return {
       prev,
       last,
@@ -209,34 +218,33 @@ class Movies extends Component {
     const { selectedGenre, startIndex, endIndex } = this.state;
 
     return (
-      <div>
+      <div className="container">
         <div className="movies-list-container">
-          <div className="movies-list">
-            <div className="filter-by-genre">
-              <h5 className="filter-label">Filter by genre</h5>
-              <Select
-                className="genres"
-                value={selectedGenre}
-                onChange={this.handleGenreChange}
-                options={options}
-                placeholder="Select genre"
-              />
+          <div className="movies-list-add-to-watchlist">
+            <div className="filter-and-search">
+              <div className="filter-by-genre-add-to-watchlist">
+                <h5 className="filter-label">Filter by genre</h5>
+                <Select
+                  className="genres-add-to-watchlist"
+                  value={selectedGenre}
+                  onChange={this.handleGenreChange}
+                  options={options}
+                  placeholder="Select genre"
+                />
+              </div>
+              <div className="movie-search-add-to-list">
+                <input
+                  className="search-box-add-to-list"
+                  id="search"
+                  type="search"
+                  onChange={this.handleFieldChange}
+                  placeholder="Search"
+                />
+              </div>
             </div>
-            <div classname="movie-search">
-              <input
-                className="search-box"
-                id="search"
-                type="search"
-                onChange={this.handleFieldChange}
-                placeholder="Search"
-              />
-            </div>
-            <div className="list-of-movies">
+            <div className="list-of-movies-add-to-watchlist">
               {currentMovies.map(movie => this.renderMovie(movie))}
             </div>
-          </div>
-          <div className="top-movies">
-            <TopMovies movies={this.state.movies} />
           </div>
         </div>
         <ul id="page-numbers">
@@ -273,9 +281,7 @@ class Movies extends Component {
                   <Pagination key={i}>
                     <PaginationItem
                       active={
-                        pageNumbers[currentPage - 1] === number
-                          ? true
-                          : false
+                        pageNumbers[currentPage - 1] === number ? true : false
                       }
                     >
                       <PaginationLink
@@ -326,4 +332,4 @@ class Movies extends Component {
   }
 }
 
-export default Movies;
+export default AddToWatchlist;

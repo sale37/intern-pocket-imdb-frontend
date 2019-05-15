@@ -1,27 +1,38 @@
 .image-container {
-    width: 40%;
     float: left;
-    margin-bottom: 40px;
-    margin-top: 40px;
+    margin-bottom: 10px;
+    clear: left;
+    margin-right: 10px;
+}
+
+.movie-container {
+    overflow: hidden;
+    width: 70%;
+    margin-top: 10px;
+    border-right: 2px solid grey;
+    padding-left: 10px;
+}
+
+
+.image-and-description {
+    clear: both;
+    overflow: hidden;
+    padding-top: 20px;
 }
 
 .image {
-    height: 500px;
-    width: 500px;
-    padding-left: 40px;
+    height: 300px;
+    width: 300px;
 }
 
 .movie-title {
-    margin-top: 40px;
-    float: right;
-    width: 50%;
-    margin-bottom: 20px;
+    margin-top: 20px;
+    float: left;
 }
 
 .movie-descritpion {
-    float: right;
-    width: 50%;
     padding-right: 40px;
+    text-align: justify;
 }
 
 .container {
@@ -33,43 +44,110 @@
 }
 
 .description-font {
-    font-size: 20px;
-}
-
-.link-container {
-    text-align: center;
-    height: 60px;
-}
-
-.movie-link {
-    display: inline-block;
+    font-size: 15px;
 }
 
 .times-visited {
     margin-top: 5px;
-    clear: right;
-    float: right;
+    clear: left;
+    float: left;
 }
 
 .comment-container {
     clear: both;
+    padding-top: 20px;
+    
+}
+
+.comments-container {
+    clear: both;
+    padding-top: 20px;
+    
 }
 
 .watchlists-select {
-    margin-top: 20px;
+    padding-top: 30px;
+    padding-right: 40px;
     clear: right;
     float: right;
     width: 200px;
 }
 
 .like-dislike-container {
-    clear: right;
     float: left;
-    width: 30%;
+    clear: left;
+    display: inline;
+    overflow: hidden;
 }
 
 .test{
     font-size: 50px;
 }
+
+.pocket-imdb {
+    background-color: gold;
+    display: inline-block;
+    border: 5px solid black;
+    border-radius: 15px;
+    padding: 5px;
+    float: left;
+    color: black;
+}
+
+.header{
+    padding: 20px;
+    overflow: hidden;
+    border-bottom: 2px solid grey;
+}
+
+.logout-button {
+    float: right;
+}
+
+.genre {
+    float: left;
+    clear: left;
+    margin-bottom: 15px;
+}
+
+.likes-number {
+    display: inline;
+}
+
+.dislikes-number {
+    display: inline;
+}
+
+.like-container {
+    float: left;
+}
+
+.dislike-container {
+    float: left;
+    padding-left: 10px;
+}
+
+
+.thumbs-up {
+    color: green;
+}
+
+.thumbs-down {
+    color: red;
+}
+
+.thumbs-up:hover {
+    cursor: pointer;
+}
+
+.thumbs-down:hover {
+    cursor: pointer;
+}
+
+.related-movies {
+    float: right;
+    overflow: hidden;
+}
+
 
 

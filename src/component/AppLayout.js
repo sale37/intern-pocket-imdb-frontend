@@ -12,6 +12,7 @@ import Home from '../containers/Home';
 import { authUser } from '../store/actions/AuthActions';
 import { authService } from '../services/AuthService';
 import Movie from '../component/Movie';
+import AddToWatchlist from './AddToWatchlist';
 
 class AppLayout extends React.Component {
   
@@ -26,6 +27,7 @@ class AppLayout extends React.Component {
           <Route exact path="/watchlist/create" component={CreateWatchlist}/>
           <Route path="/watchlists/:id" component={Watchlist}/>
           <Route exact path="/watchlists" component={Watchlists}/>
+          <Route exact path="/home/movies/add" component={AddToWatchlist}/>
         </div>
       </BrowserRouter>
     );
