@@ -2,6 +2,9 @@ import React from 'react';
 import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import CreateWatchlist from './CreateWatchlist';
+import Watchlist from './Watchlist';
+import Watchlists from './Watchlists';
 
 import Login from '../containers/auth/Login';
 import Register from '../containers/auth/Register';
@@ -20,6 +23,9 @@ class AppLayout extends React.Component {
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/movies/:id" component={Movie}/>
+          <Route exact path="/watchlist/create" component={CreateWatchlist}/>
+          <Route path="/watchlists/:id" component={Watchlist}/>
+          <Route exact path="/watchlists" component={Watchlists}/>
         </div>
       </BrowserRouter>
     );

@@ -47,6 +47,29 @@
 
 .times-visited {
     margin-top: 5px;
-    clear: both;
+    clear: right;
     float: right;
 }
+
+.comment-container {
+    clear: both;
+}
+
+.watchlists-select {
+    margin-top: 20px;
+    clear: right;
+    float: right;
+    width: 200px;
+}
+
+.like-dislike-container {
+    clear: right;
+    float: left;
+    width: 30%;
+}
+
+.test{
+    font-size: 50px;
+}
+
+
